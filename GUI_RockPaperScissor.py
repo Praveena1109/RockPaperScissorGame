@@ -1,7 +1,7 @@
-import tkinter
+from tkinter import *
 import random
 
-window = tkinter.Tk()
+window = Tk()
 
 u = 0
 c = 0
@@ -56,28 +56,34 @@ def randomChoice():
     return x
 
 
-MyTitle = tkinter.Label(window, text="ROCK PAPER SCISSOR", font="Helvetica 10 ")
-MyTitle.pack()
+frame = Frame(window)
+frame.pack()
 
-MyButton = tkinter.Button(window, text="Rock", command=lambda: compute('R'))
-MyButton.pack()
+MyTitle = Label(frame, text="ROCK PAPER SCISSOR", font="Helvetica 18 ")
+MyTitle.grid(columnspan=6)
 
-Button2 = tkinter.Button(window, text="Paper", command=lambda: compute('P'))
-Button2.pack()
+MyButton = Button(frame, text="Rock", font="12", command=lambda: compute('R'))
+MyButton.grid(row=1, column=0, padx=4, pady=4)
 
-Button3 = tkinter.Button(window, text="Scissor", command=lambda: compute('S'))
-Button3.pack()
+Button2 = Button(frame, text="Paper", font="12", command=lambda: compute('P'))
+Button2.grid(row=1, column=2, padx=4, pady=4)
 
-choice = tkinter.Label(window, font="Helvetica 10")
-choice.pack()
+Button3 = Button(frame, text="Scissor", font="12", command=lambda: compute('S'))
+Button3.grid(row=1, column=4, padx=4, pady=4)
 
-result = tkinter.Label(window, font="Helvetica 16 bold")
-result.pack()
+choice = Label(frame, font="Helvetica 15")
+choice.grid(columnspan=6, padx=4, pady=4)
 
-user_score = tkinter.Label(window, font="Helvetica 10")
-user_score.pack()
+result = Label(frame, font="Helvetica 16 bold")
+result.grid(columnspan=6, padx=4, pady=4)
 
-computer_score = tkinter.Label(window, font="Helvetica 10")
-computer_score.pack()
+user_score = Label(frame, font="Helvetica 15")
+user_score.grid(columnspan=6, padx=4, pady=4)
+
+computer_score = Label(frame, font="Helvetica 15")
+computer_score.grid(columnspan=6, padx=4, pady=4)
+
+quit_button = Button(frame, text="EXIT", font="15", command=frame.quit)
+quit_button.grid(columnspan=6, padx=4, pady=4)
 
 window.mainloop()

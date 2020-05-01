@@ -1,8 +1,9 @@
 from tkinter import *
 import random
+import tkinter.messagebox
 
 window = Tk()
-
+window.configure(bg="white")
 u = 0
 c = 0
 
@@ -57,33 +58,41 @@ def randomChoice():
 
 
 frame = Frame(window)
+frame.configure(bg="white")
 frame.pack()
 
-MyTitle = Label(frame, text="ROCK PAPER SCISSOR", font="Helvetica 18 ")
-MyTitle.grid(columnspan=6)
+logo = PhotoImage(file="heading.png")
+MyTitle = Label(frame, image=logo, font="Times 30 bold ", bg="white")
+MyTitle.grid(columnspan=6, padx=10, pady=10, sticky=N)
 
-MyButton = Button(frame, text="Rock", font="12", command=lambda: compute('R'))
-MyButton.grid(row=1, column=0, padx=4, pady=4)
+photo1 = PhotoImage(file="rock.png")
+photo2 = PhotoImage(file="paper.png")
+photo3 = PhotoImage(file="scissor.png")
 
-Button2 = Button(frame, text="Paper", font="12", command=lambda: compute('P'))
-Button2.grid(row=1, column=2, padx=4, pady=4)
+MyButton = Button(frame, image=photo1, command=lambda: compute('R'), bg="white")
+MyButton.grid(row=1, column=0, padx=20, pady=10)
 
-Button3 = Button(frame, text="Scissor", font="12", command=lambda: compute('S'))
-Button3.grid(row=1, column=4, padx=4, pady=4)
+Button2 = Button(frame, image=photo2, command=lambda: compute('P'), bg="white")
+Button2.grid(row=1, column=2, padx=20, pady=10)
 
-choice = Label(frame, font="Helvetica 15")
-choice.grid(columnspan=6, padx=4, pady=4)
+Button3 = Button(frame, image=photo3, command=lambda: compute('S'), bg="white")
+Button3.grid(row=1, column=4, padx=20, pady=10)
 
-result = Label(frame, font="Helvetica 16 bold")
-result.grid(columnspan=6, padx=4, pady=4)
+choice = Label(frame, font="Helvetica 18", bg="white")
+choice.grid(columnspan=6, padx=15, pady=15)
 
-user_score = Label(frame, font="Helvetica 15")
-user_score.grid(columnspan=6, padx=4, pady=4)
+result = Label(frame, font="Helvetica 20 bold", bg="white")
+result.grid(columnspan=6, padx=15, pady=15)
 
-computer_score = Label(frame, font="Helvetica 15")
-computer_score.grid(columnspan=6, padx=4, pady=4)
+user_score = Label(frame, font="Helvetica 18", bg="white")
+user_score.grid(columnspan=6, padx=15, pady=15)
 
-quit_button = Button(frame, text="EXIT", font="15", command=frame.quit)
-quit_button.grid(columnspan=6, padx=4, pady=4)
+computer_score = Label(frame, font="Helvetica 18", bg="white")
+computer_score.grid(columnspan=6, padx=15, pady=15)
+
+quit_button = Button(frame, text="EXIT", font="16", bg="white", command=frame.quit)
+quit_button.grid(columnspan=6, padx=15, pady=15)
+
+tkinter.messagebox.showinfo('How to play', 'Click on the image to choose your move')
 
 window.mainloop()
